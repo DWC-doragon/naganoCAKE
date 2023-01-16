@@ -74,9 +74,9 @@ ActiveRecord::Schema.define(version: 2023_01_16_031335) do
     t.string "zip_code", null: false
     t.string "address", null: false
     t.integer "postage", null: false
-    t.integer "billing_amount", default: 0, null: false
+    t.integer "billing_amount", null: false
     t.integer "payment_method", default: 0, null: false
-    t.integer "status", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
