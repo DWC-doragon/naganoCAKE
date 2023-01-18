@@ -35,7 +35,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
-  namespace :admins do
+  namespace :admin do
    get 'admin' => 'admin#top'
    resources :customers, only: [:index, :edit, :update, :show]
    resources :genres, only: [:index, :create, :edit, :update]
