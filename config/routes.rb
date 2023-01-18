@@ -1,25 +1,18 @@
 Rails.application.routes.draw do
-  
+
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
 
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-}
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
     # customer側ルーティング
-  devise_for :customers, controllers: {
-   sessions:      'customers/sessions',
-   passwords:     'customers/passwords',
-   registrations: 'customers/registrations'
-  }
 
   scope module: 'customers' do
-    root 'items#top'
+    root 'homes#top'
     resources :items, only: [:show, :index]
-    get 'about' => 'items#about'
+    get 'about' => 'homes#about'
    end
 
   namespace :customers do
@@ -33,19 +26,17 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
    get 'orders/complete' => 'orders#complete'
    resources :orders, only: [:create, :new, :index, :show]
    resources :cart_items, only: [:index, :create, :update, :destroy]
-   delete 'cart_items' => 'cart_items#all_destroy', as: 'all_destroy'
+   delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
    resources :shippings, only: [:index, :create, :destroy, :edit, :update]
   end
 
   # admin側ルーティング
-  devise_for :admins, controllers: {
-   sessions:      'admins/sessions',
-   passwords:     'admins/passwords',
-   registrations: 'admins/registrations'
-  }
+devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  sessions: "admin/sessions"
+}
 
   namespace :admins do
-   root :to => 'top#top'
+   get 'admin' => 'admin#top'
    resources :customers, only: [:index, :edit, :update, :show]
    resources :genres, only: [:index, :create, :edit, :update]
    resources :items, only: [:show, :index, :new, :create, :edit, :update]
