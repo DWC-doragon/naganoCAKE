@@ -29,7 +29,7 @@
 
       <div class="field form-group col-xs-9">
         <%= f.label :"郵便番号(ハイフンなし）", class: "col-sm-4 control-label" %>
-        <%= f.number_field :zip_code, class: "col-sm4 form-control-static" %>
+        <%= f.text_field :zip_code, class: "col-sm4 form-control-static" %>
       </div>
 
       <div class="field form-group col-xs-9">
@@ -39,7 +39,7 @@
 
       <div class="field form-group col-xs-9">
         <%= f.label :"電話番号（ハイフンなし）", class: "col-sm-4 control-label" %>
-        <%= f.number_field :telephone_number, class: "col-sm-4 control-static" %>
+        <%= f.telephone_field :telephone_number, class: "col-sm-4 control-static" %>
       </div>
 
       <div class="field form-group col-xs-9">
@@ -57,7 +57,10 @@
       </div>
     <% end %>
 
-    <div class="col-xs-9">
+      <div class="col-xs-9">
+        <h2 class="head-line title_h2 text-center">既に登録済みの方</h2>
+        <p class="new-link"><%= link_to "こちら", new_customer_session_path %>からログインしてください。</p>
+    </div>
 
     </div>
   </div>
