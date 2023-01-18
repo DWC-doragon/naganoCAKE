@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
     # customer側ルーティング
 
-  scope module: 'customers' do
+  scope module: 'public' do
     root 'homes#top'
     resources :items, only: [:show, :index]
     get 'about' => 'homes#about'
@@ -35,7 +35,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
-  namespace :admins do
+  namespace :admin do
    get 'admin' => 'admin#top'
    resources :customers, only: [:index, :edit, :update, :show]
    resources :genres, only: [:index, :create, :edit, :update]
