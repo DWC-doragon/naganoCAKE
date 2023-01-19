@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
    end
 
+  scope module: 'customers' do
+  end
+
   namespace :customers do
    resources :genres, only: [:show]
    patch 'customers/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
