@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
-  devise_for :customers,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
+  devise_for :customers,skip: [:passwords, :registrations], controllers: {
   sessions: 'public/sessions'
 }
-
+devise_scope :customer do
+    get 'customers/sign_up', to: 'public/registrations#new', as: :new_customer_registration
+    post 'customers/sign_up', to: 'public/registrations#create', as: :customer_registration
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
     # customer側ルーティング
@@ -13,6 +15,9 @@ Rails.application.routes.draw do
     root 'homes#top'
     resources :products, only: [:show, :index]
     get 'about' => 'homes#about'
+    get 'customers/my_page' => 'customers#show'
+    patch 'customers/update' => 'customers#update'
+    get 'customers/edit' => 'customers#edit'
    end
 
   scope module: 'customers' do
@@ -21,9 +26,6 @@ Rails.application.routes.draw do
   namespace :customers do
    resources :genres, only: [:show]
    patch 'customers/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
-   get 'my_page' => 'customers#show'
-   get 'edit' => 'customers#edit'
-   patch 'update' => 'customers#update'
    get 'unsubscribe' => 'customers#unsubscribe'
    get 'orders/about' => 'orders#about', as: 'orders_about'
    get 'orders/complete' => 'orders#complete'
