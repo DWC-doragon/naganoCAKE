@@ -42,7 +42,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
    get 'admin' => 'admin#top'
    resources :customers, only: [:index, :edit, :update, :show]
    resources :genres, only: [:index, :create, :edit, :update]
-   resources :items, only: [:show, :index, :new, :create, :edit, :update]
+   resources :products, only: [:show, :index, :new, :create, :edit, :update]
    resources :orders, only: [:index, :show, :update]
    resources :order_details, only: [:update]
   end
