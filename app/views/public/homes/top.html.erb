@@ -22,7 +22,7 @@
     </div>
     <div class="col-md-7 offset-1 mx-auto m-5">
       <%= image_tag 'strawberry.jpg' %>
-      <% @product.each do |item| %>
+      <% @product.each do |product| %>
              <div class="col">
                <div class="card mx-auto mt-4 bg-dark text-white">
                  <%= link_to product_path(product) do %>
@@ -33,7 +33,7 @@
                         <%= link_to product.name, product_path(product) %>
                       </div>
                         <div class="card-text">
-                         <%= (product.with_tax_price).to_s(:delmited) + "円" %>
+                         <%= product.add_tax_price.to_s(:delimited) %> 円
                         </div>
                     </div>
                </div>
