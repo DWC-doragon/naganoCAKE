@@ -1,4 +1,4 @@
-class Public::ItemsController < ApplicationController
+class Public::ProductsController < ApplicationController
 
   before_action :authenticate_customer!, only: [:show]
 
