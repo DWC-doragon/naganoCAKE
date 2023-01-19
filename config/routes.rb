@@ -11,15 +11,15 @@ Rails.application.routes.draw do
 
   scope module: 'public' do
     root 'homes#top'
-    resources :items, only: [:show, :index]
+    resources :products, only: [:show, :index]
     get 'about' => 'homes#about'
    end
 
   namespace :customers do
    resources :genres, only: [:show]
    patch 'customers/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
-   get 'show' => 'customers#show'
-   get 'customers/edit' => 'customers#edit'
+   get 'my_page' => 'customers#show'
+   get 'edit' => 'customers#edit'
    patch 'update' => 'customers#update'
    get 'unsubscribe' => 'customers#unsubscribe'
    get 'orders/about' => 'orders#about', as: 'orders_about'
