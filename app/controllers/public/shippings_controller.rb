@@ -1,19 +1,18 @@
 class Public::ShippingsController < ApplicationController
 def index
-    @address = Address.new
-    @addresses = Address.all
-   
+    @shipping_addresses = Shipping_addresses.new
+    @shipping_addresses = @customer.shipping_addresses
 end 
   
   def edit
-    @address = Address.find(params[:id])
+    @shipping_address = Address.find(shipping_address_params[:id])
   end
   
   def create
-    @address = Address.new(address_params)
-    @address.customer_id = current_customer.id
-    if @address.save
-      redirect_to shippings_path
+    @shipping_addresses = Shipping_addresses.new(shipping_addresses_params)
+    @shipping_addresses.customer_id = current_customer.id
+    if @shipping_addresses.save
+      redirect_to customers_shippings_path
     else
       
       render :index
