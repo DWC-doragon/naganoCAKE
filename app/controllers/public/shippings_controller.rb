@@ -2,9 +2,11 @@ class Public::ShippingsController < ApplicationController
 def index
     @shipping_addresses = Shipping_addresses.new
     @shipping_addresses = @customer.shipping_addresses
-  end
+ end
+
 
   def edit
+    @shipping_address = Address.find(shipping_address_params[:id])
   end
 
   def create
@@ -20,6 +22,7 @@ def index
 
 
   def update
+    
   end
 
   def desrtoy
@@ -27,7 +30,8 @@ def index
 
   private
 
-  def shipping_params
-    params.require(:shipping_addresses).permit(:name, :zip_code, :address)
+  
+  def shipping_address_params
+    params.require(:shipping_address).permit(:name, :zip_code, :address)
   end
-  end
+end
