@@ -1,17 +1,19 @@
 class Public::ShippingsController < ApplicationController
 def index
-    @shipping_addresses = Shipping_addresses.new
-    @shipping_addresses = @customer.shipping_addresses
-  end 
+    @address = Address.new
+    @addresses = Address.all
+   
+end 
   
   def edit
+    @address = Address.find(params[:id])
   end
   
   def create
-    @shipping_addresses = Shipping_addresses.new(shipping_addresses_params)
-    @shipping_addresses.customer_id = current_customer.id
-    if @shipping_addresses.save
-      redirect_to customers_shippings_path
+    @address = Address.new(address_params)
+    @address.customer_id = current_customer.id
+    if @address.save
+      redirect_to shippings_path
     else
       
       render :index
@@ -20,6 +22,7 @@ def index
     
  
   def update
+    
   end
 
   def desrtoy
@@ -27,7 +30,7 @@ def index
   
   private
   
-  def shipping_params
-    params.require(:shipping_addresses).permit(:name, :zip_code, :address)
+  def shipping_address_params
+    params.require(:shipping_address).permit(:name, :zip_code, :address)
   end
-  end
+end

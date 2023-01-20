@@ -18,6 +18,12 @@ devise_scope :customer do
     get 'customers/my_page' => 'customers#show'
     patch 'customers/update' => 'customers#update'
     get 'customers/edit' => 'customers#edit'
+    resources :shippings, only: [:index, :create, :destroy, :edit, :update]
+    resources :orders, only: [:create, :new, :index, :show]
+    get 'orders/complete' => 'orders#complete'
+    get 'orders/confirm' => 'orders#confirm'
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
    end
 
   scope module: 'customers' do
@@ -28,12 +34,8 @@ devise_scope :customer do
    patch 'customers/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
    get 'unsubscribe' => 'customers#unsubscribe'
    get 'orders/about' => 'orders#about', as: 'orders_about'
-   get 'orders/complete' => 'orders#complete'
-   resources :orders, only: [:create, :new, :index, :show]
-   resources :cart_items, only: [:index, :create, :update, :destroy]
-   delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
-   resources :shippings, only: [:index, :create, :destroy, :edit, :update]
-  end
+   
+   end
 
   # admin側ルーティング
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
