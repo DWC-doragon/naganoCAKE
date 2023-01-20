@@ -1,11 +1,10 @@
 <div class="row">
-  <div class="col-xs-4 mx-auto">
+  <div class="col-xs-4 ml-5 mt-5">
       <h2>商品詳細</h2><br>
-      <%= image_tag @product.get_image, size: "50×50"  %>
-  </div>
+      <%= image_tag @product.get_image, width: '50%', height: '50%' %>
+  </div><br>
 
-      <br><br><br><br>
-      <div class="col-xs-8 mx-auto">
+      <div class="col-xs-8 ml-5 ">
         <table class="table">
           <tbody>
             <tr>
