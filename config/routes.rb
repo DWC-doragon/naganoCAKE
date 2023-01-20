@@ -18,6 +18,10 @@ devise_scope :customer do
     get 'customers/my_page' => 'customers#show'
     patch 'customers/update' => 'customers#update'
     get 'customers/edit' => 'customers#edit'
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    patch 'customers/withdrawal' => 'customers#withdrawal'
+
+
     resources :shippings, only: [:index, :create, :destroy, :edit, :update]
     resources :orders, only: [:create, :new, :index, :show]
     get 'orders/complete' => 'orders#complete'
@@ -31,8 +35,8 @@ devise_scope :customer do
 
   namespace :customers do
    resources :genres, only: [:show]
-   patch 'customers/withdrawal' => 'customers#withdrawal', as: 'customers_withdrawal'
-   get 'unsubscribe' => 'customers#unsubscribe'
+
+
    get 'orders/about' => 'orders#about', as: 'orders_about'
    
    end
