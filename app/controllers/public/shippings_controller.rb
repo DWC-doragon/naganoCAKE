@@ -1,25 +1,29 @@
 class Public::ShippingsController < ApplicationController
 def index
-    @shipping_addresses = Shipping_addresses.new
-    @shipping_addresses = @customer.shipping_addresses
-  end
+    @shipping_address = ShippingAddress.new
+    
+ end
+
 
   def edit
+    @shipping_address = ShippingAddress.find(shipping_address_params[:id])
   end
 
   def create
-    @shipping_addresses = Shipping_addresses.new(shipping_addresses_params)
-    @shipping_addresses.customer_id = current_customer.id
-    if @shipping_addresses.save
+    @shipping_address = ShippingAddress.new(shipping_address_params)
+    @shipping_address.customer_id = current_customer.id
+    if @shipping_address.save
+      flash[:notice] = "配送先を登録しました"
       redirect_to customers_shippings_path
     else
-
+      @addresses = ShippingAddress.where(customer: current_customer)
       render :index
     end
   end
 
 
   def update
+    
   end
 
   def desrtoy
@@ -27,7 +31,8 @@ def index
 
   private
 
-  def shipping_params
-    params.require(:shipping_addresses).permit(:name, :zip_code, :address)
+  
+  def shipping_address_params
+    params.require(:shipping_address).permit(:name, :zip_code, :address)
   end
-  end
+end
