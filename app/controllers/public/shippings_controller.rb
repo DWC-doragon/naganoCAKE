@@ -1,8 +1,8 @@
 class Public::ShippingsController < ApplicationController
 def index
     @shipping_address = ShippingAddress.new
-    
- end
+    @shipping_addresses = ShippingAddress.where(customer: current_customer)
+end
 
 
   def edit
