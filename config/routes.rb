@@ -27,7 +27,7 @@ devise_scope :customer do
     get 'orders/complete' => 'orders#complete'
     get 'orders/confirm' => 'orders#confirm'
     resources :cart_items, only: [:index, :create, :update, :destroy]
-    delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
+    delete 'cart_items' => 'carts_items#destroy_all', as: 'destroy_all'
    end
 
   scope module: 'customers' do
