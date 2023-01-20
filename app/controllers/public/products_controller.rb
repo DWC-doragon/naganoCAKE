@@ -6,7 +6,7 @@ class Public::ProductsController < ApplicationController
     @products = Product.all.order(created_at: :asc)
     #=> :asc,古い順 :desc,新しい順
     @genres = Genre.all
-	end
+  end
 
 	def index
     @genres = Genre.all
@@ -17,6 +17,7 @@ class Public::ProductsController < ApplicationController
     @products = Product.all
     @product = Product.find(params[:id])
     @cart_item = CartItem.new
+    @genres = Genre.all
 	end
 
   def about
