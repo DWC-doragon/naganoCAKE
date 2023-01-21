@@ -35,6 +35,10 @@ class Admin::ProductsController < ApplicationController
       render 'edit'
     end
   end
+  
+  def search
+    @products = Product.all.search(params[:keyword])
+  end
 
 
 private
