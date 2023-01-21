@@ -5,7 +5,7 @@
 		</div>
 		<br>
 		<div class="col-4">
-			<p class="item-content"><%= image_tag @product.get_image, size: "100×100" %></p>
+			<p class="item-content"><%= image_tag @product.get_image, size: "200x200" %></p>
 		</div>
 		<div class="col">
 			<%= form_for(@cart_item , url: cart_items_path(product_id: @product), method: :post) do |form| %>
