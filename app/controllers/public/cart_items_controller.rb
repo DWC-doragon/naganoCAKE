@@ -13,7 +13,7 @@ class Public::CartItemsController < ApplicationController
         cart_item.update(quantity: cart_item.quantity + params[:cart_item][:quantity].to_i)
         flash[:notice] = "数量変更しました"
      else
-        cart_item=CartItem.new(cart_item_params)
+        cart_item = CartItem.new(cart_item_params)
         cart_item.save
         flash[:notice] = "商品をカートにいれました"
      end
@@ -22,14 +22,14 @@ class Public::CartItemsController < ApplicationController
   end
   
   def update
-    cart_item=CartItem.find(params[:id])
+    cart_item = CartItem.find(params[:id])
     cart_item.update(cart_item_params)
     flash[:notice] = "数量変更しました"
     redirect_back(fallback_location: root_path)
   end
   
   def destroy
-    cart_item=CartItem.find(params[:id])
+    cart_item = CartItem.find(params[:id])
     cart_item.destroy
     flash[:notice] = "カートから１商品を削除しました"
     redirect_back(fallback_location: root_path)
@@ -43,7 +43,7 @@ class Public::CartItemsController < ApplicationController
   private
 
   def setup_cart_item!
-    @cart_item = CartItem.find_by(item_id: params[:product_id])
+    @cart_item = CartItem.find_by(product_id: params[:product_id])
   end
 
   def cart_item_params
