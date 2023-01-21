@@ -10,7 +10,11 @@ class Public::ProductsController < ApplicationController
 
 	def index
     @genres = Genre.all
-    @products = Product.all
+    if params[:genre_id]
+      @products=Product.where(genre_id: params[:genre_id]).page(params[:page]).per(8)
+    else
+      @products = Product.all.page(params[:page]).per(8)
+    end
 	end
 
 	def show

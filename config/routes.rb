@@ -20,6 +20,7 @@ devise_scope :customer do
     get 'customers/edit' => 'customers#edit'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdrawal' => 'customers#withdrawal'
+    resources :genres, only: [:show]
 
 
     resources :shippings, only: [:index, :create, :destroy, :edit, :update]
@@ -34,7 +35,7 @@ devise_scope :customer do
   end
 
   namespace :customers do
-   resources :genres, only: [:show]
+   
 
 
    get 'orders/about' => 'orders#about', as: 'orders_about'
