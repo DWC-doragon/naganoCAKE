@@ -38,7 +38,7 @@ devise_scope :customer do
 
 
    get 'orders/about' => 'orders#about', as: 'orders_about'
-   
+
    end
 
   # admin側ルーティング
@@ -54,5 +54,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
    resources :orders, only: [:index, :show, :update]
    resources :order_details, only: [:update]
   end
+
+   get "/search" => "products#search"
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

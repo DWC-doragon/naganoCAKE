@@ -6,12 +6,15 @@
 		<p class="item-content"><%= image_tag @product.get_image, size: "100×100" %></p>
 	</div>
 
+
 	<div class="col">
 		<%= form_for(@cart_item , url: cart_items_path(product_id: @product), method: :post) do |form| %>
+
 		<h3><%= @product.name %></h3>
 		<p><%= @product.explanation %></p>
 
 	</div>
+
 
 		<div class="col">
 
@@ -22,7 +25,7 @@
 		<div class="col">
 		  <p><%= form.submit "カートに入れる", class:"btn btn-primary" %></p>
 		</div>
-		<% end %>
+	<% end %>
 	</div>
 </div>
 </div>
