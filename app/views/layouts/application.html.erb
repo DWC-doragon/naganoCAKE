@@ -25,58 +25,68 @@
 
             <li>
               <%= link_to admin_products_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
-             商品一覧
+                商品一覧
               <% end %>
             </li>
             <li>
               <%= link_to about_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
-              会員一覧
+                会員一覧
               <% end %>
             </li>
             <li>
               <%= link_to about_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
-              注文履歴一覧
+                注文履歴一覧
               <% end %>
             </li>
             <li>
               <%= link_to admin_genres_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
-              ジャンル一覧
+                ジャンル一覧
               <% end %>
             </li>
             <li>
               <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link btn btn-outline-secondary text-dark' do %>
-              ログアウト
-            <% end %>
+                ログアウト
+              <% end %>
+            </li>
+            
+
+
             <br>
-            <div>
+
               <%= form_with url: search_path, method: :get, local: true do |f| %>
                 <%= f.text_field :keyword,placeholder: "検索", class: "search-text"%>
               <% end %>
 
+
+
             <% else %>
 
             <% if customer_signed_in? %>
+            <li class="mt-5">
+              ようこそ、<%= current_customer.last_name + current_customer.first_name %>さん！
+            </li>
             <li>
               <%= link_to customers_my_page_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
-             マイページ
+                マイページ
               <% end %>
             </li>
             <li>
               <%= link_to products_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
-              商品一覧
+                商品一覧
               <% end %>
             </li>
             <li>
               <%= link_to cart_items_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
-              カート
+                カート
               <% end %>
             </li>
             <li>
-              <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' do %>
-              ログアウト
+              <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link btn btn-outline-secondary text-dark' do %>
+                ログアウト
               <% end %>
+            </li>
               <br>
-              <div>
+
               <%= form_with url: search_path, method: :get, local: true do |f| %>
                 <%= f.text_field :keyword,placeholder: "検索", class: "search-text"%>
               <% end %>
@@ -84,41 +94,42 @@
               <% else %>
             <li class="nav-item">
               <%= link_to about_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
-              About
+                About
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to products_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
-              商品一覧
+                商品一覧
               <% end %>
 
             </li>
             <li>
               <%= link_to new_customer_registration_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
-              新規登録
+                新規登録
               <% end %>
             </li>
             <li>
               <%= link_to  new_customer_session_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
-              ログイン
+                ログイン
               <% end %>
-              </li>
-              <li>
+            </li>
+            <li>
               <%= link_to  new_admin_session_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
-              管理者ログイン
+                管理者ログイン
               <% end %>
-              </li>
-              <li>
+            </li>
+            <li>
               <%= link_to  shippings_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
-              住所
+                住所
               <% end %>
-              </li>
+            </li>
+
               <br>
-              <div>
+
               <%= form_with url: search_path, method: :get, local: true do |f| %>
                 <%= f.text_field :keyword,placeholder: "検索", class: "search-text"%>
               <% end %>
-              </div>
+
             <% end %>
             <% end %>
             </ul>
