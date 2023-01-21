@@ -1,30 +1,28 @@
+<div class="container">
 <div class="row">
 <%= render 'sidebar', genres: @genres %>
 	<br>
-	<div class="col-xs-5">
+	<div class="col">
 		<p class="item-content"><%= image_tag @product.get_image, size: "100×100" %></p>
 	</div>
 
-	<div class="col-xs-5">
+	<div class="col">
 		<%= form_for(@cart_item , url: cart_items_path(product_id: @product), method: :post) do |form| %>
 		<h3><%= @product.name %></h3>
 		<p><%= @product.explanation %></p>
 
 	</div>
-</div>
 
-<div class="row">
-	<div class="col-xs-2">
-	</div>
-	<div class="col-xs-5">
+		<div class="col">
 
-			<p class="item-quantity", style="font-family: arial black">¥ <%= ((@product.price*1.1).floor).to_s(:delimited, delimiter: ',') %> (税込)
+			<p class="item-quantity", style="font-family: arial black">¥ <%= ((@product.add_tax_price).floor).to_s(:delimited, delimiter: ',') %> (税込)
 				<span>　　</span><%= form.select :quantity, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], {:prompt => "個数選択"} %></p>
 		</div>
 
-		<div class="col-xs-5">
+		<div class="col">
 		  <p><%= form.submit "カートに入れる", class:"btn btn-primary" %></p>
 		</div>
 		<% end %>
 	</div>
+</div>
 </div>
