@@ -47,6 +47,11 @@
               <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link btn btn-outline-secondary text-dark' do %>
               ログアウト
             <% end %>
+            <br>
+            <div>
+              <%= form_with url: search_path, method: :get, local: true do |f| %>
+                <%= f.text_field :keyword,placeholder: "検索", class: "search-text"%>
+              <% end %>
 
             <% else %>
 
@@ -69,6 +74,11 @@
             <li>
               <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' do %>
               ログアウト
+              <% end %>
+              <br>
+              <div>
+              <%= form_with url: search_path, method: :get, local: true do |f| %>
+                <%= f.text_field :keyword,placeholder: "検索", class: "search-text"%>
               <% end %>
 
               <% else %>
@@ -103,6 +113,12 @@
               住所
               <% end %>
               </li>
+              <br>
+              <div>
+              <%= form_with url: search_path, method: :get, local: true do |f| %>
+                <%= f.text_field :keyword,placeholder: "検索", class: "search-text"%>
+              <% end %>
+              </div>
             <% end %>
             <% end %>
             </ul>
