@@ -1,6 +1,6 @@
 <div class="container my-5">
   <div class="row">
-    <h3 class="mt-2 offset-3 title-text text">Order...</h3>
+    <h3 class="mt-2 offset-3 title-text text">注文情報入力</h3>
   </div>
   
   <div class="row">
@@ -33,7 +33,7 @@
           登録済住所から選択
         </label></br>
         <div class="light-text">
-          <%= f.collection_select :select_address, @addresses, :id, :address_select %>
+          <%= f.collection_select :select_address, @shipping_addresses, :id, :address_select %>
         </div>
       </div> 
       
