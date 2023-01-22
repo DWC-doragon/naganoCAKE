@@ -105,15 +105,6 @@
                 管理者ログイン
               <% end %>
             </li>
-
-
-              <br>
-
-              <%= form_with url: search_path, method: :get, local: true do |f| %>
-                <%= f.text_field :keyword,placeholder: "検索", class: "search-text"%>
-              <% end %>
-
-
             <% end %>
             <% end %>
             </ul><br>
