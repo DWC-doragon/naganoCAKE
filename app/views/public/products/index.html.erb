@@ -11,7 +11,7 @@
 					<div class="col-3">
 						<%= link_to product_path(product.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
 							<%= image_tag product.get_image, size: "100x100" %><br>
-							<%= product.name %>
+							<%= product.name %><br>
 							¥<%= product.add_tax_price.to_s(:delimited, delimiter: ',') %>
 						<% end %>
 					</div>
