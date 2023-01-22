@@ -44,9 +44,9 @@
 					</tr>
 				</thead>
 				<tbody class="light-text">
-					<td><%= @order.fare %></td>
+					<td><%= @order.postage %></td>
 					<td><%= set_price %></td>
-					<td><%= @order.fare + set_price %></td>
+					<td><%= @order.postage + set_price %></td>
 				</tbody>
 			</table>
 		</div>
@@ -66,10 +66,11 @@
 			<%= form_with model: @order, url: orders_path, method: :POST do |f| %>
 				<%= f.hidden_field :customer_id, :value => current_customer.id %>
 				<%= f.hidden_field :payment_method, :value => @order.payment_method %>
-				<%= f.hidden_field :billing_amount, :value => @order.fare + set_price %>
+				<%= f.hidden_field :billing_amount, :value => @order.postage + set_price %>
 				<%= f.hidden_field :zip_code, :value => @order.zip_code %>
 				<%= f.hidden_field :address, :value => @order.address %>
 				<%= f.hidden_field :name, :value => @order.name %>
+				<%= f.hidden_field :postage, :value => @order.postage %>
 			  <div class="mt-4 text">
 					<%= f.submit "Check ◎", class: "btn btn-lg btn-danger ml-auto" %>
 				</div>

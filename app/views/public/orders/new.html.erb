@@ -9,15 +9,15 @@
       <%= f.hidden_field :customer_id, :value => current_customer.id %>
       <h4 class="text"><支払い方法></h4>
       <div class="light-text">
-        <%= f.radio_button :payment_method, :クレジットカード, checked: true %>
+        <%= f.radio_button :payment_method, Order.payment_methods.key(1), checked: true %>
         <%= f.label :payment_method, "クレジットカード" %>
-        <%= f.radio_button :payment_method, :銀行振込 %>
+        <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
         <%= f.label :payment_method, "銀行振込" %>
       </div>
       
       <h4 class="text"><お届け先></h4>
       <div class="form-check">
-        <input class="form_check_input" type="radio" name="order_address" id="customer_address" value="option1" checked>
+        <%= f.radio_button :order_address, 0, checked: true %>
         <label class="form_check_label text" for="customer_address">
           ご自身の住所
         </label></br>
@@ -28,7 +28,7 @@
       </div>  
       
       <div class="form-check">
-        <input class="form_check_input" type="radio" name="order_address" id="add_address" value="option2" >
+        <%= f.radio_button :order_address, 1, checked: true %>
         <label class="form_check_label text" for="add_address">
           登録済住所から選択
         </label></br>
@@ -38,7 +38,7 @@
       </div> 
       
       <div class="form-check">
-        <input class="form_check_input" type="radio" name="order_address" id="new_address" value="option3" >
+        <%= f.radio_button :order_address, 2, checked: true %>
         <label class="form_check_label text" for="new_address">
           新しいお届け先
         </label></br>

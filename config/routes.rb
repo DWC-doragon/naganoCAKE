@@ -22,10 +22,10 @@ devise_scope :customer do
     patch 'customers/withdrawal' => 'customers#withdrawal'
     resources :genres, only: [:show]
 
-
+     get 'orders/complete' => 'orders#complete'
     resources :shippings, only: [:index, :create, :destroy, :edit, :update]
     resources :orders, only: [:create, :new, :index, :show]
-    get 'orders/complete' => 'orders#complete'
+
     post 'orders/confirm' => 'orders#confirm'
     resources :cart_items, only: [:index, :create, :update, :destroy]
     delete "cart_items" => "cart_items#destroy_all"
@@ -35,7 +35,7 @@ devise_scope :customer do
   end
 
   namespace :customers do
-   
+
 
 
    get 'orders/about' => 'orders#about', as: 'orders_about'
