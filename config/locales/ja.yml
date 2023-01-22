@@ -4,7 +4,7 @@
         payment_method:
           transfer: "銀行振込"
           credit_card: "クレジットカード"
-        order_status:
+        status:
           waiting: "入金待ち"
           verification: "入金確認"
           producing: "製作中"
