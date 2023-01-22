@@ -75,12 +75,6 @@
                 ログアウト
               <% end %>
             </li>
-              <br>
-
-              <%= form_with url: search_path, method: :get, local: true do |f| %>
-                <%= f.text_field :keyword,placeholder: "検索", class: "search-text"%>
-              <% end %>
-
               <% else %>
             <li class="nav-item">
               <%= link_to about_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
