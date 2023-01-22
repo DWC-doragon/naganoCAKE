@@ -33,7 +33,7 @@
           登録済住所から選択
         </label></br>
         <div class="light-text">
-          <%= f.collection_select :select_address, @shipping_addresses, :id, :address_select %>
+          <%= f.collection_select :address_select, @shipping_addresses, :id, :address_select %>
         </div>
       </div> 
       

@@ -10,17 +10,18 @@ class Public::OrdersController < ApplicationController
         @order = Order.new(order_params)
 		@order.customer_id = current_customer.id
 		@order.postage = 800
-
+        
         if params[:order][:order_address] == "0"
            @order.zip_code = current_customer.zip_code
            @order.address = current_customer.address
            @order.name = current_customer.last_name + current_customer.first_name
-        elsif params[:order_address] == "1"
-           @address = Address.find(params[:order][:select_address])
-           @order.address = @address.address
-           @order.name = @address.name
-           @order.zip_code = @address.zip_code
-        elsif params[:order_address] == "2"
+        elsif params[:order][:order_address] == "1"
+            
+           @shipping_address = ShippingAddress.find(params[:order][:address_select])
+           @order.address = @shipping_address.address
+           @order.name = @shipping_address.name
+           @order.zip_code = @shipping_address.zip_code
+        elsif params[:order][:order_address] == "2"
         end
         @cart_items=current_customer.cart_items
 
