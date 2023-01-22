@@ -105,11 +105,15 @@
                 管理者ログイン
               <% end %>
             </li>
-            <li>
-              <%= link_to  shippings_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
-                住所
+
+
+              <br>
+
+              <%= form_with url: search_path, method: :get, local: true do |f| %>
+                <%= f.text_field :keyword,placeholder: "検索", class: "search-text"%>
               <% end %>
-            </li>
+
+
             <% end %>
             <% end %>
             </ul><br>
