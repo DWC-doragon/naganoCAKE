@@ -20,7 +20,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto ">
             <% if admin_signed_in? %>
 
             <li>
@@ -51,16 +51,6 @@
                 ログアウト
               <% end %>
             </li>
-            
-
-
-            <br>
-
-              <%= form_with url: search_path, method: :get, local: true do |f| %>
-                <%= f.text_field :keyword,placeholder: "検索", class: "search-text"%>
-              <% end %>
-
-
 
             <% else %>
 
@@ -126,16 +116,14 @@
                 住所
               <% end %>
             </li>
-
-              <br>
-
-              <%= form_with url: search_path, method: :get, local: true do |f| %>
+            <% end %>
+            <% end %>
+            </ul><br>
+            <div class="pull-right" style="margin-top: 100px;">
+             <%= form_with url: search_path, method: :get, local: true do |f| %>
                 <%= f.text_field :keyword,placeholder: "検索", class: "search-text"%>
               <% end %>
-
-            <% end %>
-            <% end %>
-            </ul>
+            </div>
           </div>
         </div>
       </nav>
