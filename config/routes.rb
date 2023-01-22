@@ -20,25 +20,26 @@ devise_scope :customer do
     get 'customers/edit' => 'customers#edit'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdrawal' => 'customers#withdrawal'
+    resources :genres, only: [:show]
 
 
     resources :shippings, only: [:index, :create, :destroy, :edit, :update]
     resources :orders, only: [:create, :new, :index, :show]
     get 'orders/complete' => 'orders#complete'
-    get 'orders/confirm' => 'orders#confirm'
+    post 'orders/confirm' => 'orders#confirm'
     resources :cart_items, only: [:index, :create, :update, :destroy]
-    delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
+    delete "cart_items" => "cart_items#destroy_all"
    end
 
   scope module: 'customers' do
   end
 
   namespace :customers do
-   resources :genres, only: [:show]
+   
 
 
    get 'orders/about' => 'orders#about', as: 'orders_about'
-   
+
    end
 
   # admin側ルーティング
@@ -54,5 +55,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
    resources :orders, only: [:index, :show, :update]
    resources :order_details, only: [:update]
   end
+
+   get "/search" => "products#search"
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
