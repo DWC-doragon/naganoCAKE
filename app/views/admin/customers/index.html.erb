@@ -20,16 +20,16 @@
               <td><%= customer.id %></td>
               <td><%= link_to customer.last_name + "　"  + customer.first_name,admin_customer_path(customer.id) %></td>
               <td><%= customer.email %></td>
-            </tr>
               <td>
                 <% if customer.is_deleted == false %>
                 有効
                 <% else %>
                 無効
                 <% end %>
-              </td>            
+              </td>
+            </tr>
             <% end %>
-            <%= paginate @customers %>
+          <%= paginate @customers %>
         </tbody>
       </table>
     </div>

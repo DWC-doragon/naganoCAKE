@@ -14,13 +14,13 @@
     <header class="border border-dark">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand p-5" href="/"><span>ながのけーき</span></a>
+          <a class="navbar-brand p-5" href="/"><span><%= image_tag 'logo.png' %> </span></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto ">
             <% if admin_signed_in? %>
 
             <li>
@@ -29,13 +29,16 @@
               <% end %>
             </li>
             <li>
-              <%= link_to about_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
-                会員一覧
+
+              <%= link_to admin_customers_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
+              会員一覧
               <% end %>
             </li>
             <li>
-              <%= link_to about_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
-                注文履歴一覧
+              <%= link_to admin_orders_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
+              注文履歴一覧
+
+
               <% end %>
             </li>
             <li>
@@ -48,16 +51,6 @@
                 ログアウト
               <% end %>
             </li>
-            
-
-
-            <br>
-
-              <%= form_with url: search_path, method: :get, local: true do |f| %>
-                <%= f.text_field :keyword,placeholder: "検索", class: "search-text"%>
-              <% end %>
-
-
 
             <% else %>
 
@@ -85,12 +78,6 @@
                 ログアウト
               <% end %>
             </li>
-              <br>
-
-              <%= form_with url: search_path, method: :get, local: true do |f| %>
-                <%= f.text_field :keyword,placeholder: "検索", class: "search-text"%>
-              <% end %>
-
               <% else %>
             <li class="nav-item">
               <%= link_to about_path, class: 'nav-link btn btn-outline-secondary text-dark' do %>
@@ -119,15 +106,22 @@
               <% end %>
             </li>
 
+
               <br>
 
               <%= form_with url: search_path, method: :get, local: true do |f| %>
                 <%= f.text_field :keyword,placeholder: "検索", class: "search-text"%>
               <% end %>
 
+
             <% end %>
             <% end %>
-            </ul>
+            </ul><br>
+            <div class="pull-right" style="margin-top: 100px;">
+             <%= form_with url: search_path, method: :get, local: true do |f| %>
+                <%= f.text_field :keyword,placeholder: "検索", class: "search-text"%>
+              <% end %>
+            </div>
           </div>
         </div>
       </nav>
