@@ -1,7 +1,7 @@
 
 <div class="row">
   <div class="col-md-8 offset-md-1">
-      <h2><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h2>
+      <h2 class = "bg-light w-50"><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h2>
         <table class="row table">
           <tr>
             <th class="col-xs-2">会員ID</th>
@@ -55,7 +55,7 @@
             </tr>
         </table>
 
-        <div class="row">
+        <div class="row mb-5">
           <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success" %>
           <%= link_to "注文履歴一覧を見る" ,edit_admin_customer_path(@customer), class: "btn btn-primary" %>
         </div>
