@@ -15,7 +15,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all.page(params[:page]).per(10)
+    @products = Product.all.page(params[:page]).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
@@ -35,7 +35,7 @@ class Admin::ProductsController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def search
     @products = Product.all.search(params[:keyword])
   end
