@@ -1,21 +1,21 @@
 <div class="container my-5">
-<h2>管理者ログイン</h2>
+<h2 class=" bg-light w-50 text-center">管理者ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+  <div class="field ">
     <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email"%>
   </div>
 
-  <div class="field my-1">
+  <div class="field my-1 ">
     <%= f.label :パスワード %><br />
     <%= f.password_field :password, autocomplete: "current-password"%>
   </div>
 
-  
+
 
   <div class="actions mt-3">
-    <%= f.submit "ログイン", class: "btn btn-success" %>
+    <%= f.submit "ログイン", class: "btn btn-primary" %>
   </div>
 <% end %>
 </div>
