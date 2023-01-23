@@ -53,7 +53,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
    resources :genres, only: [:index, :create, :edit, :update]
    resources :products, only: [:show, :index, :new, :create, :edit, :update]
    resources :orders, only: [:index, :show, :update]
-   resources :order_details, only: [:update]
+   resources :orderd_products, only: [:update]
   end
 
    get "/search" => "products#search"
