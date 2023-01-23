@@ -6,7 +6,7 @@
 		<div class="col-9">
   		<h2 class="m-5">商品一覧 (全<%= @products.total_count %>件中<%= @products.count %>件)</h2>
 
-			<div class="row">
+			<div class="row mx-auto text-center">
 				<% @products.each do |product| %>
 					<div class="col-3">
 						<%= link_to product_path(product.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
@@ -16,8 +16,11 @@
 						<% end %>
 					</div>
 				<% end %>
+				<div class="col">
+					<%= paginate @products %>
+				</div>
 			</div>
-			<%= paginate @products %>
+
 		</div>
 	</div>
 </div>
