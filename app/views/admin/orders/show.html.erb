@@ -5,7 +5,7 @@
 
     <div class="col-md-8 offset-md-1">
       <table class="row table">
-
+        
         <tbody>
           <tr>
             <th>購入者</th>
@@ -42,9 +42,8 @@
     <div class="row">
       <div class="col-sm-1"></div>
       <div class="col-sm-8">
-        <table class="table table-bordered">
-
-        <thead>
+    <table class="table table-bordered">
+      <thead class="thead-light">
           <tr>
             <th>商品</th>
             <th>単価（税込）</th>
@@ -62,7 +61,7 @@
             <td><%= orderd_product.quantity %></td>
             <td><%= @subtotal = orderd_product.product.price * orderd_product.quantity %></td>
                 <% @total += @subtotal %>
-           
+
             <td class="align-middle">
                <%= form_with model: [:admin, orderd_product] do |f| %>
               <%= f.select :order_details, OrderdProduct.order_details.keys.map {|k| [I18n.t("enums.orderd_product.order_details.#{k}"), k]} %>
@@ -75,7 +74,7 @@
       </table>
     </div>
 
- 
+
     <div class = "col-sm-3 mb-5" >
       <table class="table table-borderless">
         <tbody>
