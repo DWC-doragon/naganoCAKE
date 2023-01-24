@@ -1,22 +1,21 @@
-<div class= "row">
-<div class="genre" style="font-size :20px;" >
-      ジャンル
-    </div>
-
-    <table class="table table-bordered table-hover text-center ec-genre-list" >
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th class="text-center">ジャンル検索</th>
+    </tr>
+  </thead>
+  <tbody>
       <tr>
-        <td>
-          <%= link_to "全商品を表示", products_path, class:"ec-genre-list-item" %>
+        <td class="text-center"><%= link_to "全商品を表示", products_path %></td>
+      </tr>
+    <% genres.each do |genre| %>
+      <tr>
+        <td class="align-middle text-center">
+          <%= link_to products_path(genre_id: genre.id) do %>
+            <%= genre.name %>
+          <% end %>
         </td>
       </tr>
-
-      <% genres.each do |genre| %>
-         <tr>
-          <td>
-            <%= link_to genre.name, products_path(genre_id: genre.id), class:"ec-genre-list-item"%>
-            </td>
-        </tr>
-           <% end %>
-
-      </table>
-</div>
+    <% end %>
+  </tbody>
+</table>
