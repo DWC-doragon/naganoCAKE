@@ -10,13 +10,13 @@ class Public::OrdersController < ApplicationController
         @order = Order.new(order_params)
 		@order.customer_id = current_customer.id
 		@order.postage = 800
-        
+
         if params[:order][:order_address] == "0"
            @order.zip_code = current_customer.zip_code
            @order.address = current_customer.address
            @order.name = current_customer.last_name + current_customer.first_name
         elsif params[:order][:order_address] == "1"
-            
+
            @shipping_address = ShippingAddress.find(params[:order][:address_select])
            @order.address = @shipping_address.address
            @order.name = @shipping_address.name
