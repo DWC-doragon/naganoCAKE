@@ -3,7 +3,7 @@
     <div class ="col-3">
       <%= render 'public/products/sidebar', genres: @genres %>
     </div>
-    <div class="col-md-9 mx-auto m-5">
+    <div class="col-md-9 mx-auto">
 
         <%= image_tag 'flat-lay-2583213_960_720.jpg', width: '100%', height: '50%' %>
         <div class="card-img-overlay">
@@ -15,11 +15,12 @@
         </div>
 
     <div class="container mt-4">
+      <h4>新着商品</h4>
       <div class="main-box">
         <div class="row">
         <% @products.first(4).each do |product| %>
           <div class="col">
-            <div class="card mx-auto mt-4 shadow ">
+            <div class="card mx-auto shadow ">
               <%= link_to product_path(product) do %>
               <%= image_tag product.get_image, width: '100%', height: '80%'  %>
               <% end %>
@@ -38,7 +39,7 @@
       </div>
     </div>
 
-      <div class= "col">
+      <div class= "col text-right mt-3">
       <%= link_to "全ての商品を見る>>", products_path %>
     </div>
   </div>

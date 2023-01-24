@@ -32,12 +32,12 @@
               <%= order.name %> 様
           </td>
           <td>
-            <% order.order_products.each do |f| %>
+            <% order.orderd_products.each do |f| %>
               <%= f.product.name %><br>
             <% end %>
           </td>
           <td><%= order.billing_amount %></td>
-          <td><%= order.status %></td>
+          <td><%= order.status_i18n %></td>
           <td>
             <%= link_to "Show", order_path(order), class: "btn btn-success col-10" %>
           </td>

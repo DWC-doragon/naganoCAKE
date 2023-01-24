@@ -32,11 +32,11 @@
             </tr>
             <tr>
               <td class="table-active text">支払い方法</td>
-              <td class="light-text"><%= @order.payment_method %></td>
+              <td class="light-text"><%= @order.payment_method_i18n %></td>
             </tr>
             <tr>
               <td class="table-active text">ステータス</td>
-              <td class="light-text"><%= @order.status %></td>
+              <td class="light-text"><%= @order.status_i18n %></td>
             </tr>
           </tbody>
         </table>
@@ -55,18 +55,18 @@
             <tr>
               <td class="table-active text">商品合計</td>
               <td class="light-text">
-                
+
                 <!-- 商品合計 請求額 - 送料 -->
-                <%= @order.payment_method - @order.fare %>
+                <%= @order.billing_amount - @order.postage %>
               </td>
             </tr>
             <tr>
               <td class="table-active text">配送料</td>
-              <td class="light-text"><%= @order.fare %></td>
+              <td class="light-text"><%= @order.postage %></td>
             </tr>
             <tr>
               <td class="table-active text">ご請求額</td>
-              <td class="light-text"><%= @order.payment_method %></td>
+              <td class="light-text"><%= @order.billing_amount %></td>
             </tr>
           </tbody>
         </table>
@@ -94,14 +94,14 @@
         </thead>
 
         <tbody>
-          <% @order_products.each do |order_product| %>
+          <% @order_products.each do |orderd_product| %>
           <tr class="light-text">
-            <td><%= order_product.product.name %></td>
-            <td><%= order_product.payment_method %></td>
-            <td><%= order_product.quantity %></td>
+            <td><%= orderd_product.product.name %></td>
+            <td><%= orderd_product.product.add_tax_price %></td>
+            <td><%= orderd_product.quantity %></td>
             <td>
               <!-- 小計の計算 税込み単価×注文個数 -->
-              <%= order_product.price * order_product.quantity %>
+              <%= orderd_product.product.add_tax_price * orderd_product.quantity %>
             </td>
           </tr>
           <% end %>
