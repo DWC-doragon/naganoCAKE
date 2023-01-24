@@ -57,9 +57,9 @@
           <% @orderd_products.each do |orderd_product| %>
           <tr>
             <td><%= orderd_product.product.name %></td>
-            <td><%= orderd_product.product.price %></td>
+            <td><%= orderd_product.product.add_tax_price %></td>
             <td><%= orderd_product.quantity %></td>
-            <td><%= @subtotal = orderd_product.product.price * orderd_product.quantity %></td>
+            <td><%= @subtotal = orderd_product.product.add_tax_price * orderd_product.quantity %></td>
                 <% @total += @subtotal %>
 
             <td class="align-middle">
