@@ -65,3 +65,4 @@ gem "enum_help"
 
 #ffffff
 #FFFFFFFF
+#FFFFF
