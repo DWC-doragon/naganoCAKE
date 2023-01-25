@@ -7,7 +7,7 @@ devise_scope :customer do
     get 'customers/sign_up', to: 'public/registrations#new', as: :new_customer_registration
     post 'customers/sign_up', to: 'public/registrations#create', as: :customer_registration
   end
-  
+
     # customer側ルーティング
   scope module: 'public' do
     root 'homes#top'
