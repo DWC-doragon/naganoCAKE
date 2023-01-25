@@ -23,6 +23,7 @@ class Admin::CustomersController < ApplicationController
       edit_admin_customer_path(@customer)
     end
   end
+  
     private
 
   def customer_params
