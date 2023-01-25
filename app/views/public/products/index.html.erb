@@ -1,0 +1,25 @@
+<div class="container">
+	<div class="row">
+		<div class= "col-3">
+			<%= render 'sidebar', genres: @genres %>
+		</div>
+		<div class="col-9">
+  		<h2 class="m-5">商品一覧 (全<%= @products.total_count %>件中<%= @products.count %>件)</h2>
+
+			<div class="row mx-auto text-center">
+				<% @products.each do |product| %>
+					<div class="col-3">
+						<%= link_to product_path(product.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
+							<%= image_tag product.get_image, size: "100x100" %><br>
+							<%= product.name %><br>
+							¥<%= product.add_tax_price.to_s(:delimited, delimiter: ',') %>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
+			<div class="col-5 mx-auto">
+				<%= paginate @products %>
+			</div>
+		</div>
+	</div>
+</div>
