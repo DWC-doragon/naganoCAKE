@@ -12,7 +12,7 @@
 				<h3><%= @product.name %></h3>
 				<p><%= @product.explanation %></p>
 				<p class="item-quantity", style="font-family: arial black">¥ <%= ((@product.add_tax_price).floor).to_s(:delimited, delimiter: ',') %> (税込)
-				<span>　　</span><%= f.select :quantity, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], include_blank: "個数選択" %>
+				<%= f.select :quantity, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], include_blank: "個数選択" %>
 				</p>
 				<%= f.hidden_field :customer_id, :value => current_customer.id %>
 				<%= f.hidden_field :product_id, :value => @product.id %>
