@@ -11,7 +11,7 @@ class Product < ApplicationRecord
     (image.attached?) ? image : 'no_image.jpg'
    end
    
-   def self.search(search_word) #①
+   def self.search(search_word) 
     Product.where(["name LIKE(?)"], "%#{search_word}%")
    end
    
