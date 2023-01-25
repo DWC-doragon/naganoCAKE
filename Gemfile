@@ -63,4 +63,5 @@ gem 'pry-rails'
 
 gem "enum_help"
 
-#fffffff
+#ffffff
+#FFFFFFFF
