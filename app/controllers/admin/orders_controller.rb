@@ -16,8 +16,8 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.update(order_params)
     @orderd_products = @order.orderd_products
-    if @order.status == "verification"
-      @orderd_products.each do |orderd_product|
+    if  @order.status == "verification"
+        @orderd_products.each do |orderd_product|
         orderd_product.order_details = "waiting"
         orderd_product.save
       end
