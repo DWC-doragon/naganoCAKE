@@ -2,7 +2,7 @@
   <div class="col-xs-10 col-xs-offset-1 mx-auto my-5">
     <h2 class="head-line title_h2 text-center bg-light w-50 mx-auto">商品一覧</h2>
     <%= link_to new_admin_product_path, class: "btn btn-success btn-lg mb-2 " do %>
-    新規商品登録
+      新規商品登録
     <% end %>
     <table class="table table-bordered">
       <thead class="thead-light">
@@ -14,9 +14,10 @@
           <th>ステータス</th>
         </tr>
       </thead>
+      
       <tbody>
-				<% @products.each do |product| %>
-  				<tr>
+			  <% @products.each do |product| %>
+  			  <tr>
             <td class="info col-xs-1">
               <%= product.id %>
             </td>
@@ -41,6 +42,7 @@
           </tr>
         <% end %>
       </tbody>
+      
     </table>
     <div class="col-5 mx-auto">
      <%= paginate @products %>

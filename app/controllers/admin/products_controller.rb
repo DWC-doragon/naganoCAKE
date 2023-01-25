@@ -8,14 +8,14 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-    redirect_to admin_product_path(@product)
+      redirect_to admin_product_path(@product)
     else
       render 'new'
     end
   end
 
   def index
-    @products = Product.all.page(params[:page]).order(created_at: :desc).page(params[:page]).per(10)
+    @products = Product.all.page(params[:page]).order("id").page(params[:page]).per(10)
   end
 
   def show
@@ -30,7 +30,6 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
     if @product.update(product_params)
       redirect_to admin_product_path(@product)
-      flash[:notice_update] = "商品情報を更新しました！"
     else
       render 'edit'
     end
@@ -44,13 +43,7 @@ class Admin::ProductsController < ApplicationController
 private
 
   def product_params
-    params.require(:product).permit(:name, :image, :explanation,
-        :genre_id,:price, :is_active)
+    params.require(:product).permit(:name, :image, :explanation, :genre_id, :price, :is_active)
   end
-
-
-
-
-
 
 end
